@@ -8,8 +8,6 @@ import "./OrderSummary.css";
 const OrderSummary = () => {
   let [data, setData] = useState([]);
   let [restau, setRestau] = useState("");
-  let [quantity, setQuantity] = useState([]);
-  let [orderTotal, setOrderTotal] = useState("");
   
   useEffect(() => {
     const dataurl = "https://indapi.kumba.io/webdev/assignment";
@@ -49,14 +47,15 @@ const OrderSummary = () => {
                         </div>
                         <div className="qty ms-auto">
                           <button
-                            className="form-control btn btn-dark text-white"
+                          id={index}
+                            className="form-control btn btn-dark disabled text-white"
                           >
                             +
                           </button>
                           <p className="mx-3 item-quantity">
                             <input type="number" defaultValue={item.quantity || ""} />  
                           </p>
-                          <button className="form-control btn btn-dark text-white">
+                          <button className="form-control btn btn-dark disabled text-white">
                             -
                           </button>
                         </div>
