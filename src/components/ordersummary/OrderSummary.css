@@ -1,0 +1,36 @@
+.item {
+    display: flex;
+    align-items: center;
+}
+.item-name {
+    width: 60%;
+}
+.order-summary {
+    background: rgb(189, 188, 188);
+    padding: 10px;
+}
+input {
+    width: 50px;
+    text-align: center;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+.qty {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.checkout {
+    background: linear-gradient(to right, purple, green);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+}
+@media only screen and (min-width: 768px) {
+    .action-button {
+        display: flex;
+    }
+}
