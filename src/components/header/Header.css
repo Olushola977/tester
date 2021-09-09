@@ -1,0 +1,7 @@
+.nav-link {
+    font-weight: 600 !important;
+    color: coral;
+}
+.nav-link:hover, .nav-link:focus {
+    color: rgb(173, 48, 2);
+}

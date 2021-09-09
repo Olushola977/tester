@@ -18,9 +18,7 @@ const Profile = () => {
     async function getData() {
       const fetchData = await fetch(dataurl);
       const response = await fetchData.json();
-      console.log(response, "my data");
       setData((data = response));
-      console.log(data, "user data");
       setLikes((likes = data.user.likes));
       setDisLikes((dislikes = data.user.dislikes));
     }
@@ -124,7 +122,7 @@ const Profile = () => {
               <Name />
               <div className="about-section">
               <About />
-              <div className="d-flex preference">
+              <div className="d-md-flex preference">
                 <Likes />
                 <DisLikes />
               </div>

@@ -1,12 +1,16 @@
 .item {
-    display: flex;
-    align-items: center;
+    display: block;
 }
 .item-name {
-    width: 60%;
+    width: auto;
+    margin-bottom: 10px;
+}
+.item-name span {
+    font-size: 15px;
+    font-weight: 300;
 }
 .order-summary {
-    background: rgb(189, 188, 188);
+    background: #bdbcbc2e;
     padding: 10px;
 }
 input {
@@ -24,13 +28,40 @@ input[type=number]::-webkit-outer-spin-button {
     align-items: center;
 }
 .checkout {
-    background: linear-gradient(to right, purple, green);
+    background: red;
     color: #fff;
     font-size: 15px;
     font-weight: 700;
 }
+.table {
+    justify-content: space-between;
+}
+.restaurant {
+    height: 150px;
+    background-position: center;
+    background-size: cover;
+    padding: 20px;
+    color: #fff;
+}
+.action-button button:nth-child(2){
+    margin-top: 10px;
+}
+.item-price {
+    margin-bottom: 10px;
+    font-weight: 400px
+}
 @media only screen and (min-width: 768px) {
     .action-button {
         display: flex;
+    }
+    .item {
+        display: flex;
+        align-items: center;
+    }
+    .item-name {
+        width: 60%;
+    }
+    .restaurant {
+        height: 250px;
     }
 }
