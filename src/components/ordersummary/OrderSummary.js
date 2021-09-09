@@ -7,6 +7,7 @@ import "./OrderSummary.css";
  */
 
 const OrderSummary = () => {
+  const URL = "https://indapi.kumba.io/webdev/assignment";
   let [data, setData] = useState([]);
   let [restau, setRestau] = useState("");
   let subTotal = [];
@@ -16,15 +17,16 @@ const OrderSummary = () => {
   let grandTotal = "";
 
   useEffect(() => {
-    const dataurl = "https://indapi.kumba.io/webdev/assignment";
-    async function getData() {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    const dataurl = URL;
       const fetchData = await fetch(dataurl);
       const response = await fetchData.json();
       setData((data = response.items));
       setRestau((restau = response.restaurant));
-    }
-    getData();
-  }, []);
+  }
 
   const preview = (total, num) => {
     const sub = total * num;
@@ -52,10 +54,7 @@ const OrderSummary = () => {
   return (
       <>
       <div style={{
-          background: `linear-gradient(
-            rgba(255, 0, 0, 0.45), 
-            rgba(255, 0, 0, 0.45)
-          ), url(${Restaurant})`
+          background: `linear-gradient(rgb(255 24 0 / 57%), rgb(93 2 115 / 45%)), url(${Restaurant})`
       }} className="restaurant">
           {restau ? (
               <div>
@@ -68,11 +67,11 @@ const OrderSummary = () => {
               </div>
           ) : ""}
       </div>
-    <div className="container mt-3">
+    <div className="container py-4">
       <div className="row">
         <div className="col-lg-8">
           <div className="card">
-            <div className="card-body">
+            <div className="cont card-body">
               <h5>Cart</h5>
               <div>
                 {data ? (
@@ -82,8 +81,8 @@ const OrderSummary = () => {
                       key={index}
                       onLoad={preview(item.price, item.quantity)}
                     >
-                      <div className="item card-body">
-                        <div className="item-name">
+                      <div className="item d-block d-md-flex align-items-md-center card-body">
+                        <div className="item-name mb-2 mb-md-0">
                           <h5>{item.name}</h5>
                           <span>Category: {item.category}</span>
                         </div>
@@ -95,7 +94,8 @@ const OrderSummary = () => {
                             </span>
                           </p>
                         </div>
-                        <div className="qty ms-auto">
+                        <div className="qty d-flex justify-content-space-between 
+                          align-items-center ms-auto">
                           <button
                             id={index}
                             className="form-control btn btn-dark disabled text-white"
@@ -120,11 +120,11 @@ const OrderSummary = () => {
                   <h5>No Products</h5>
                 )}
               </div>
-              <div className="action-button">
+              <div className="action-button d-block d-md-flex">
                 <button className="btn disabled btn-dark form-control">
                   Update Cart
                 </button>
-                <button className="ms-md-3 btn disabled btn-dark form-control">
+                <button className="ms-md-3 mt-2 mt-md-0 btn disabled btn-dark form-control">
                   Continue Shopping
                 </button>
               </div>

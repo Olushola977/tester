@@ -13,17 +13,25 @@ const Profile = () => {
   let [data, setData] = useState("");
   let [likes, setLikes] = useState([]);
   let [dislikes, setDisLikes] = useState([]);
+  
   useEffect(() => {
-    const dataurl = URL;
-    async function getData() {
-      const fetchData = await fetch(dataurl);
-      const response = await fetchData.json();
-      setData((data = response));
-      setLikes((likes = data.user.likes));
-      setDisLikes((dislikes = data.user.dislikes));
-    }
     getData();
   }, []);
+
+  const getData = async () => {
+    const dataurl = URL;
+    try {
+      const fetchData = await fetch(dataurl);
+      const response = await fetchData.json();
+      if (response) {
+        setData((data = response));
+        setLikes((likes = data.user.likes));
+        setDisLikes((dislikes = data.user.dislikes));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const Name = () => {
     const name = data ? data.user.name : "";
@@ -45,7 +53,10 @@ const Profile = () => {
       <div>
         {phone ? (
           <>
-            <h6>Phone: </h6> <a href={`tel:${phone}`}><code>{phone}</code></a>
+            <h6>Phone: </h6>{" "}
+            <a href={`tel:${phone}`}>
+              <code>{phone}</code>
+            </a>
           </>
         ) : (
           ""
@@ -59,7 +70,7 @@ const Profile = () => {
     return (
       <div
         style={{
-          marginTop: "15px"
+          marginTop: "15px",
         }}
       >
         <h5>About</h5>
@@ -71,9 +82,11 @@ const Profile = () => {
   const Address = () => {
     const address = data ? data.user.address : "";
     return (
-      <div style={{
-          marginTop: "15px"
-      }}>
+      <div
+        style={{
+          marginTop: "15px",
+        }}
+      >
         {address && (
           <>
             <h6>Address: </h6>
@@ -90,8 +103,7 @@ const Profile = () => {
       <div>
         <p className="pre-header">Likes</p>
         <ul className="list">
-          {like &&
-            like.map((item, index) => <li key={index}> {item}, </li>)}
+          {like && like.map((item, index) => <li key={index}> {item}, </li>)}
         </ul>
       </div>
     );
@@ -121,13 +133,13 @@ const Profile = () => {
               </div>
               <Name />
               <div className="about-section">
-              <About />
-              <div className="d-md-flex preference">
-                <Likes />
-                <DisLikes />
-              </div>
-              <PhoneNumber />
-              <Address />
+                <About />
+                <div className="d-md-flex preference">
+                  <Likes />
+                  <DisLikes />
+                </div>
+                <PhoneNumber />
+                <Address />
               </div>
             </div>
           </div>

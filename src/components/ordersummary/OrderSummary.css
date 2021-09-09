@@ -1,10 +1,4 @@
-.item {
-    display: block;
-}
-.item-name {
-    width: auto;
-    margin-bottom: 10px;
-}
+
 .item-name span {
     font-size: 15px;
     font-weight: 300;
@@ -22,11 +16,6 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none; 
   margin: 0; 
 }
-.qty {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 .checkout {
     background: red;
     color: #fff;
@@ -43,25 +32,18 @@ input[type=number]::-webkit-outer-spin-button {
     padding: 20px;
     color: #fff;
 }
-.action-button button:nth-child(2){
-    margin-top: 10px;
-}
 .item-price {
-    margin-bottom: 10px;
     font-weight: 400px
 }
 @media only screen and (min-width: 768px) {
-    .action-button {
-        display: flex;
-    }
-    .item {
-        display: flex;
-        align-items: center;
-    }
     .item-name {
         width: 60%;
     }
     .restaurant {
         height: 250px;
+    }
+    .cont {
+        max-height: 600px;
+        overflow-y: auto;
     }
 }
